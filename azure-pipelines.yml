@@ -5,7 +5,7 @@
 # https://aka.ms/yaml
 
 trigger:
-- master
+
 
 pool:
   vmImage: ubuntu-latest
@@ -20,6 +20,10 @@ steps:
   displayName: 'Run a multi-line script'
 
 
+- task: CopyFiles@2
+  inputs:
+    Contents: '**'
+    TargetFolder: '$(Build.BinariesDirectory)'
 - task: ArchiveFiles@2
   inputs:
     rootFolderOrFile: '$(Build.BinariesDirectory)'
